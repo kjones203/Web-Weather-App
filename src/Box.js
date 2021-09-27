@@ -9,11 +9,6 @@ function Box(props) {
     function confirmPress(){
         props.onConfirm();
     }
-    
-
-
-    const [temp, setTemp] = 'celcius';
-    let component
 
     return ( 
     <div className='box'>

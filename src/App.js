@@ -1,6 +1,8 @@
 import React, { useState, Component, useRef} from 'react';
 import location from './assets/location';
+import WeeklyTemp from './components/WeeklyTemp';
 import Box from './Box';
+
 const api = {
   key: "fb2a7c5be0798b46d45b22b97742cc73",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -15,7 +17,7 @@ function App() {
   const [click, setClick] = useState(0);
   
   
-
+  
 
   function deleteHandler(){
     setModalIsOpen(true);
@@ -34,22 +36,28 @@ function App() {
           setQuery('');
           console.log(weather);
       });
+      /*fetch(`https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}`)*/
     }
   }
 
   const dateBuilder = (d) => {
-      let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     
-      let day = days[d.getDay()];
-      let date = d.getDate();
-      let month = months[d.getMonth()];
-      let year = d.getFullYear();
+      var day = days[d.getDay()];
+      var date = d.getDate();
+      var month = months[d.getMonth()];
+      var year = d.getFullYear();
 
       return `${day} ${month} ${date} ${year}`
   }
 
- 
+  
+  
+  
+  var g = new Date();
+  var dayCount = new Array(7);
+  var dayCount = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   
   return (
     <div className={(typeof weather.main != "undefined") 
@@ -65,7 +73,7 @@ function App() {
             placeholder="Search..."
             onChange={e => setQuery(e.target.value)}
             value={query}
-            onKeyPress={search}
+            onKeyPress={search} 
           />
         </div>
         {(typeof weather.main != "undefined") ? (
@@ -82,13 +90,34 @@ function App() {
               { modalIsOpen && <Box onCancel={closeModalHandler} onConfirm={closeModalHandler}  />
               }
             </div>
+            <div class="weeklybox">
+              <div>{dayCount[g.getDay()]}
+                
+              </div>
+              <div>{dayCount[g.getDay() + 1]}</div>
+              <div>{dayCount[g.getDay() + 2]}</div>
+              <div>{dayCount[g.getDay() + 3]}</div>
+              <div>{dayCount[g.getDay() + 4]}</div>
+              <div>{dayCount[g.getDay() + 5]}</div>
+              <div>{dayCount[g.getDay() + 6]}</div>
+              <div>
+
+              </div>
+            </div>
+           <WeeklyTemp />
             <div className="weather">{weather.weather[0].main}</div>
+              
           </div>
         </div>
           ) : ('')}
      </main>
+     
     </div> //Put weather icon after Sunny
   )
+
+
+    
+  
 
   function render(){
                     if (click % 3 == 0)
