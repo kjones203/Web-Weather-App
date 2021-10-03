@@ -120,11 +120,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5px;
-    column-gap: 5px;
+    column-gap: 1px;
   }
 
   .weeklybox :first-child {
     align-self: center;
+  }
+
+  .weeklybox2 :second-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 5px;
+    
   }
   
   .btn {

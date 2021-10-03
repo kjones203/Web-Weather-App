@@ -59,6 +59,11 @@ function App() {
   var dayCount = new Array(7);
   var dayCount = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   
+  function print (dayC, n, index){
+    for (var i = index; i < n + index; i++)
+      return (dayC[parseInt(i % n)]);
+  }
+
   return (
     <div className={(typeof weather.main != "undefined") 
       ? ((weather.main.temp > 16) 
@@ -91,18 +96,13 @@ function App() {
               }
             </div>
             <div class="weeklybox">
-              <div>{dayCount[g.getDay()]}
-                
-              </div>
+              <div>{dayCount[g.getDay()]}</div>
               <div>{dayCount[g.getDay() + 1]}</div>
               <div>{dayCount[g.getDay() + 2]}</div>
               <div>{dayCount[g.getDay() + 3]}</div>
               <div>{dayCount[g.getDay() + 4]}</div>
               <div>{dayCount[g.getDay() + 5]}</div>
-              <div>{dayCount[g.getDay() + 6]}</div>
-              <div>
-
-              </div>
+              <div>Sunday</div>
             </div>
            <WeeklyTemp />
             <div className="weather">{weather.weather[0].main}</div>

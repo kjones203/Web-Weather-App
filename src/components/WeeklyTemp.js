@@ -80,7 +80,7 @@ function WeeklyTemp(props){
 
     return (
         <div>
-        <div class="weeklybox">
+        <div class="weeklybox :first-child">
               <div>{dailyT1}</div>
               <div>{dailyT2}</div>
               <div>{dailyT3}</div>
