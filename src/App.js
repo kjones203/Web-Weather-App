@@ -2,22 +2,27 @@ import React, { useState, Component, useRef} from 'react';
 import location from './assets/location';
 import WeeklyTemp from './components/WeeklyTemp';
 import Box from './Box';
+import TempConvert from './components/TempConvert';
 
 const api = {
   key: "fb2a7c5be0798b46d45b22b97742cc73",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
+
+
 function App() {
   const temper = 'celcius';
   const [query, setQuery] = useState(''); //init state '' returns query, setQuery
   const [weather, setWeather] = useState({}); //init state {}, returns weather, setWeather
   const [ modalIsOpen, setModalIsOpen ] = useState(false); //React Hook, can only be called in React function
-  
+  const [lat, setLat] = useState(null);
+  const [longt, setLongt] = useState(null);
+  const [status, setStatus] = useState(null);
   const [click, setClick] = useState(0);
   
   
-  
+ 
 
   function deleteHandler(){
     setModalIsOpen(true);
@@ -36,7 +41,37 @@ function App() {
           setQuery('');
           console.log(weather);
       });
-      /*fetch(`https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}`)*/
+      /*fetch(`https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}`)
+      https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API key}*/
+    }
+  }
+
+  function getGPS() {
+    if (!navigator.geolocation) {
+      setStatus('Please allow geolocation services');
+    } 
+    else {
+      setStatus ('Searching for location');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStatus(null);
+        setLat(position.coords.latitude);
+        setLongt(position.coords.longitude);
+      }, () => {
+        setStatus('Error: Cannot find location');
+      });
+    }
+    
+    if (lat == null || longt == null){
+      console.log('No latitude or longitude found. Try again')
+    }
+    else{
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${longt}&appid=${api.key}`)
+        .then(res => res.json())
+        .then(result => {
+          setWeather(result)
+          setQuery('');
+          console.log(weather);
+      });
     }
   }
 
@@ -64,6 +99,8 @@ function App() {
       return (dayC[parseInt(i % n)]);
   }
 
+  
+
   return (
     <div className={(typeof weather.main != "undefined") 
       ? ((weather.main.temp > 16) 
@@ -81,6 +118,15 @@ function App() {
             onKeyPress={search} 
           />
         </div>
+        <div>
+          <input
+            type = "button"
+            className = "btn"
+            onClick = {getGPS} 
+            value = 'Get Location'
+            onChange={e => setQuery(e.target.value)}
+          />
+        </div>
         {(typeof weather.main != "undefined") ? (
         <div>
           <div className="location-box">
@@ -90,22 +136,21 @@ function App() {
           <div className="weather-box">
             <div className="temp">
               <button className = 'btn' onClick={deleteHandler, () => setClick((prev)=> prev +1)}>
-                    {render()}
+                    <TempConvert click = {click} temp = {weather.main.temp} />
                 </button>
               { modalIsOpen && <Box onCancel={closeModalHandler} onConfirm={closeModalHandler}  />
               }
             </div>
-            <div class="weeklybox">
-              <div>{dayCount[g.getDay()]}</div>
-              <div>{dayCount[g.getDay() + 1]}</div>
-              <div>{dayCount[g.getDay() + 2]}</div>
-              <div>{dayCount[g.getDay() + 3]}</div>
-              <div>{dayCount[g.getDay() + 4]}</div>
-              <div>{dayCount[g.getDay() + 5]}</div>
-              <div>Sunday</div>
-            </div>
-           <WeeklyTemp />
+            
+           <WeeklyTemp click = {click} /> 
             <div className="weather">{weather.weather[0].main}</div>
+            <div className="App">
+              
+              <h1>Coordinates</h1>
+              <p>{status}</p>
+              {lat && <p>Latitude: {lat}</p>}
+              {longt && <p>Longitude: {longt}</p>}
+              </div>
               
           </div>
         </div>
@@ -119,8 +164,9 @@ function App() {
     
   
 
-  function render(){
-                    if (click % 3 == 0)
+ /* function render(){
+    return
+                    /*if (click % 3 == 0)
                     return (
                       <div>{Math.round(weather.main.temp)}°C</div>
                       );
@@ -135,8 +181,8 @@ function App() {
                     else
                       return ( 
                         <div>{Math.round(weather.main.temp) * 9/5 + 32}°F</div>
-                      );
-  }
-}
+                      );*/
+  
+} 
 
 export default App;
