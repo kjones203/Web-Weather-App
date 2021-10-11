@@ -17,6 +17,7 @@ function App() {
   const [currentTemp, setCurrentTemp] = useState('');
   const [cloudiness, setCloudiness] = useState(null);
   const [city, setCity] = useState({});
+  const [cloud, setCloud] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false); //React Hook, can only be called in React function
   const [lat, setLat] = useState(null);
   const [longt, setLongt] = useState(null);
@@ -64,6 +65,32 @@ function App() {
     
   };
 
+  function getCloudAPI(){
+    fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${longt}&localityLanguage=en`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setCloud(result);
+        setQuery(result.localityInfo.administrative[0].name);
+        console.log('Cloud API: ' + cloud.localityInfo);
+      });
+  }
+
+  function getOpenWeatherAPI(){
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+          .then(res => res.json())
+          .then(result => {
+          setWeather(result);
+          console.log('Weather API' + weather.weather);
+          setCurrentTemp(result.main.temp);
+          setCloudiness(result.weather[0].description);
+         
+          setQuery('');
+          //console.log('Weather API' + weather);
+          });
+  }
+
   function getGPS() {
     if (!navigator.geolocation) {
       setStatus('Please allow geolocation services');
@@ -91,8 +118,13 @@ function App() {
         .then((result) => {
           setCity(result);
           //setQuery('');
-          console.log(city);
+          console.log(city.current);
         });
+        
+        
+        
+        
+
     }
   } 
 
@@ -217,6 +249,6 @@ function App() {
     </div> //Put weather icon after Sunny
   );
 
-}
+        }
 
 export default App;
