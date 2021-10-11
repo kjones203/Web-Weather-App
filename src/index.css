@@ -121,10 +121,12 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5px;
     column-gap: 1px;
+    color: white;
   }
 
   .weeklybox :first-child {
     align-self: center;
+    color: white;
   }
 
   .weeklybox2 :second-child {

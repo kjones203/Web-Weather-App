@@ -85,7 +85,7 @@ function WeeklyTemp(props) {
 
   return (
     <div>
-        <div class="weeklybox">
+        <div className="weeklybox">
               <div>{weekOrder[0]}</div>
               <div>{weekOrder[1]}</div>
               <div>{weekOrder[2]}</div>
