@@ -9,14 +9,14 @@
   }
 
   .app {
-    background-image: url('./assets/cold.jpg');
+    background-image: url('./assets/coldtrees.jpg');
     background-size: cover;
     background-position: bottom;
     transition: 0.4s ease-out;
   }
 
   .app.warm {
-    background-image: url('./assets/warm.jpg');
+    background-image: url('./assets/warmtrees.jpg');
   }
 
   main {
@@ -116,12 +116,37 @@
     left: calc(50% - 15rem);
   }
 
+  /*.weeklybox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 1px;
+    color: white;
+
+    
+    align-items: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    
+    
+  }*/
+
   .weeklybox {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5px;
     column-gap: 1px;
     color: white;
+    background-color: #2a2a2a;
+    border: 1px solid #ececec;
+    flex-direction: row;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    
+    
+    
   }
 
   .weeklybox :first-child {

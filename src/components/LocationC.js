@@ -3,7 +3,8 @@ import '../index.css'
 function LocationC(props) {
   return(
   <div className="location">
-    {props.weather.name}, {props.weather.sys.country}
+    {props.weather.name}, {props.weather.sys.country},
+    
   </div>
   );
 }
