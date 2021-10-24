@@ -1,4 +1,11 @@
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios' 
+
+Vue.use(VueAxios, axios)
+
 const Conditions = (props) => {
+    if (typeof(props.city !== 'undefined')){
     return(
         <div>
     <h1> Latitude  {Math.round(props.lat)}</h1> 
@@ -9,6 +16,7 @@ const Conditions = (props) => {
     <h1> Moon Phase  {props.city.daily[0].moon_phase})</h1> 
     </div>
     )
+    }
 }
 
 export default Conditions;
