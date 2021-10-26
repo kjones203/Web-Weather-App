@@ -4,6 +4,17 @@ import WeeklyTemp from './components/WeeklyTemp';
 import Box from './Box';
 import TempConvert from './components/TempConvert';
 import LocationC from './components/LocationC';
+<<<<<<< Updated upstream
+=======
+import DisplayCloud from './components/DisplayCloud';
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import { useEffect } from 'react/cjs/react.development';
+import WeatherData from './components/WeatherData';
+
+Vue.use(VueAxios, axios);
+>>>>>>> Stashed changes
 
 const api = {
   key: 'fb2a7c5be0798b46d45b22b97742cc73',
@@ -33,6 +44,16 @@ function App() {
     setModalIsOpen(false);
   }
 
+  function fetchCityData(lat,lon){
+    fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${(lat)}&lon=${(lon)}&appid=${api.key}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setCity(result);
+      })
+  }
+
   const search = (evt) => {
     if (evt.key === 'Enter') {
         fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -41,7 +62,15 @@ function App() {
           setWeather(result);
           setCurrentTemp(result.main.temp);
           setCloudiness(result.weather[0].description);
+<<<<<<< Updated upstream
          
+=======
+          setLat(result.coord.lat);
+          setLongt(result.coord.lon);
+
+          fetchCityData(result.coord.lat,result.coord.lon);
+
+>>>>>>> Stashed changes
           setQuery('');
           console.log(weather);
           });
@@ -94,7 +123,48 @@ function App() {
           console.log(city);
         });
     }
+<<<<<<< Updated upstream
   } 
+=======
+  }
+
+  async function getCloudAPI() {
+    const response = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${longt}&localityLanguage=en`
+    )
+      const result = await response.json();
+
+      
+        setCloud(result);
+        setQuery(result.localityInfo.administrative[3].name);
+        console.log('Cloud API: ' + cloud);
+     
+  
+      getOpenWeatherAPI(result.localityInfo.administrative[3].name);
+    
+  }
+
+  async function getOpenWeatherAPI(q) {
+    const response = await fetch(`${api.base}weather?q=${q}&units=metric&APPID=${api.key}`)
+      const result = await response.json();
+      
+        setWeather(result);
+        console.log('Weather API' + weather.weather);
+        setCurrentTemp(result.main.temp);
+        setCloudiness(result.weather[0].description);
+        
+
+        setQuery('');
+        console.log('Weather name' + weather.name);
+      
+  }
+
+  /*useEffect(() => {
+    if (query !== '') {
+      getOpenWeatherAPI();
+    }
+  }, []);*/
+>>>>>>> Stashed changes
 
   const dateBuilder = (d) => {
     var months = [
@@ -169,17 +239,30 @@ function App() {
         <div>
           <input
             type="button"
-            className="btn"
+            className="findlocation"
             onClick={getGPS}
             value="Get Location"
             //onChange={(e) => setQuery(e.target.value)}
           />
         </div>
+<<<<<<< Updated upstream
         {(typeof (weather.main || city.current) != 'undefined' ? (
+=======
+        {//{typeof ((weather.main && weather.name ) || (city.current && weather.name)) != 'undefined' ? (
+          typeof ((weather.main && weather.name ) && (city.current && weather.name)) != 'undefined' ? (
+>>>>>>> Stashed changes
           <div>
             
             <div className="location-box">
+<<<<<<< Updated upstream
               <LocationC weather = {weather} />
+=======
+              <div>
+              
+              </div>
+              <LocationC weather={weather} />
+
+>>>>>>> Stashed changes
               <div className="date">{dateBuilder(new Date())}</div>
             </div>
             <div className="weather-box">
@@ -188,7 +271,7 @@ function App() {
                   className="btn"
                   onClick={(deleteHandler, () => setClick((prev) => prev + 1))}
                 >
-                  <TempConvert click={click} temp={currentTemp} />
+                  <TempConvert click={click} temp={currentTemp} city={city}/>
                 </button>
                 {modalIsOpen && (
                   <Box
@@ -198,9 +281,15 @@ function App() {
                 )}
               </div>
 
+<<<<<<< Updated upstream
               <WeeklyTemp click={click} />
               <div className="weather">Cloudiness: {cloudiness}</div>
 
+=======
+              <WeeklyTemp click={click} lat={lat} longt={longt} />
+              <DisplayCloud cloudiness = {cloudiness}/>
+                  <WeatherData humidity = {city.daily[0].humidity} moon = {city.daily[0].moon_phase} uvi = {city.daily[0].uvi}/>
+>>>>>>> Stashed changes
               <div className="App">
                 <h1>Coordinates</h1>
                 <p>{status}</p>

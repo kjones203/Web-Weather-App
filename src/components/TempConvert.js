@@ -5,11 +5,11 @@ function TempConvert(props){
       );
     else if (props.click % 2 == 0 && (props.click + 1) % 3 == 0)
       return (
-        <div>{Math.round(props.temp) + 273.15}K</div>
+        <div>{Math.round(props.temp) + 273}K</div>
       );
     else if ((props.click + 1) % 6 == 0)
       return (
-        <div>{Math.round(props.temp) + 273.15}K</div>
+        <div>{Math.round(props.temp) + 273}K</div>
       )
     else
       return ( 

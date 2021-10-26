@@ -1,0 +1,28 @@
+.data-box {
+    text-align: center;
+  }
+
+  .data-box .temp {
+    position: relative;
+    display: inline-block;
+    margin: 8px auto;
+    background-color: rgba(15, 13, 13, 0.5);
+    border-radius: 16px;
+
+    padding: 0px 10px;
+
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 900; 
+
+    text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+    text-align: center;
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .data-box .weather {
+    color: #FFF; 
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  }

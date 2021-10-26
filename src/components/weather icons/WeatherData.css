@@ -1,0 +1,36 @@
+.cloud-box {
+    text-align: justify;
+  }
+
+  .cloud-box .temp {
+    position: relative;
+    display: inline-block;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+
+    padding: 15px 25px;
+
+    color: #FFF;
+    font-size: 35px;
+    font-weight: 700; 
+
+    text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+    text-align: match-parent;
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .cloud-box .weather {
+    color: #FFF; 
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  }
+
+  img {
+
+      border-radius: 1px;
+      padding: 0px;
+     
+      margin-bottom: -20px;
+  }

@@ -17,11 +17,7 @@ const weeklyApi = {
   lon: -118,
 };
 
-for (let i = 0, len = dayCount.length; i < len; i++){
-    for (let j = 0; j < 8; j++){
-        weekOrder[j - 1] = (dayCount[(i+j)% len])
-    }
-} 
+
 
 
 function WeeklyTemp(props) {
@@ -37,6 +33,22 @@ function WeeklyTemp(props) {
   const [dailyT6, setdailyT6] = useState(null);
   const [dailyT7, setdailyT7] = useState(null);
 
+  const [max1, setMax1] = useState(null);
+  const [max2, setMax2] = useState(null);
+  const [max3, setMax3] = useState(null);
+  const [max4, setMax4] = useState(null);
+  const [max5, setMax5] = useState(null);
+  const [max6, setMax6] = useState(null);
+  const [max7, setMax7] = useState(null);
+
+  const [min1, setMin1] = useState(null);
+  const [min2, setMin2] = useState(null);
+  const [min3, setMin3] = useState(null);
+  const [min4, setMin4] = useState(null);
+  const [min5, setMin5] = useState(null);
+  const [min6, setMin6] = useState(null);
+  const [min7, setMin7] = useState(null);
+
   const fetchRandomPerson = async () => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${weeklyApi.lat}&lon=${weeklyApi.lon}&units=metric&appid=${weeklyApi.key}`
@@ -46,6 +58,7 @@ function WeeklyTemp(props) {
     //setRandomPerson(data);
     console.log(data);
 
+<<<<<<< Updated upstream
     const {
       lat,
       lon,
@@ -69,6 +82,35 @@ function WeeklyTemp(props) {
       wind_speed,
       temp: `${day}`,
     };
+=======
+    
+    var day = new Date(1634929200 * 1000);
+    
+
+    for (let i = 0, len = dayCount.length; i < len; i++){
+      for (let j = 0; j < 9; j++){
+          weekOrder[j - 2] = (dayCount[(i+j)% len])
+      }
+  } 
+
+   
+    setMin1(data.daily[0].temp.min);
+    setMin2(data.daily[1].temp.min);
+    setMin3(data.daily[2].temp.min);
+    setMin4(data.daily[3].temp.min);
+    setMin5(data.daily[4].temp.min);
+    setMin6(data.daily[5].temp.min);
+    setMin7(data.daily[6].temp.min);
+  
+    setMax1(data.daily[0].temp.max);
+    setMax2(data.daily[1].temp.max);
+    setMax3(data.daily[2].temp.max);
+    setMax4(data.daily[3].temp.max);
+    setMax5(data.daily[4].temp.max);
+    setMax6(data.daily[5].temp.max);
+    setMax7(data.daily[6].temp.max);
+
+>>>>>>> Stashed changes
 
     setdailyT1(data.daily[0].temp.day);
     setdailyT2(data.daily[1].temp.day);
@@ -83,6 +125,8 @@ function WeeklyTemp(props) {
     fetchRandomPerson();
   }, []);
 
+
+
   return (
     <div>
         <div className="weeklybox">
@@ -94,6 +138,7 @@ function WeeklyTemp(props) {
               <div>{weekOrder[5]}</div>
               <div>{weekOrder[6]}</div>
             </div>
+<<<<<<< Updated upstream
       <div class="weeklybox :first-child">
         <div><TempConvert temp = {dailyT1} click = {props.click} /></div>
         <div><TempConvert temp = {dailyT2} click = {props.click} /></div>
@@ -102,6 +147,25 @@ function WeeklyTemp(props) {
         <div><TempConvert temp = {dailyT4} click = {props.click} /></div>
         <div><TempConvert temp = {dailyT5} click = {props.click} /></div>
         <div><TempConvert temp = {dailyT6} click = {props.click} /></div>
+=======
+      <div className="weeklybox :first-child">
+        <div> <TempConvert temp = {max1} click = {props.click} /></div>
+        <div><TempConvert temp = {max2} click = {props.click} /></div>
+        <div><TempConvert temp = {max3} click = {props.click} /></div>
+        <div><TempConvert temp = {max3} click = {props.click} /></div>
+        <div><TempConvert temp = {max4} click = {props.click} /></div>
+        <div><TempConvert temp = {max5} click = {props.click} /></div>
+        <div><TempConvert temp = {max6} click = {props.click} /></div>
+      </div>
+      <div className="weeklybox :first-child">
+        <div> <TempConvert temp = {min1} click = {props.click} /></div>
+        <div><TempConvert temp = {min2} click = {props.click} /></div>
+        <div><TempConvert temp = {min3} click = {props.click} /></div>
+        <div><TempConvert temp = {min3} click = {props.click} /></div>
+        <div><TempConvert temp = {min4} click = {props.click} /></div>
+        <div><TempConvert temp = {min5} click = {props.click} /></div>
+        <div><TempConvert temp = {min6} click = {props.click} /></div>
+>>>>>>> Stashed changes
       </div>
     </div>
   );
