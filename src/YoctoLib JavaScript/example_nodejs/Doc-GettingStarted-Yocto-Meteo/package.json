@@ -1,0 +1,10 @@
+{
+  "name": "doc-gettingstarted-yocto-meteo",
+  "author": "Yoctopuce",
+  "description": "Yoctopuce Doc-GettingStarted-Yocto-Meteo example",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "yoctolib-es2017": "^1.10.46020"
+  }
+}

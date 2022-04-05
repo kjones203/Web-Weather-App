@@ -1,0 +1,4 @@
+EcmaScript v1.10.46020
+
+- Add support for missing measures in DataStream (returned as NaN) and skipping them in DataSet
+- Fix retrieval of module url within arrival callback

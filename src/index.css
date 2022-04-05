@@ -9,14 +9,39 @@
   }
 
   .app {
-    background-image: url('./assets/cold.jpg');
+    background-image: url('./assets/coldtrees.jpg');
     background-size: cover;
     background-position: bottom;
     transition: 0.4s ease-out;
   }
 
+  .hourlyButton{
+    position: relative;
+    left: 40%;
+    top: -1060px;
+
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background: none;
+    
+    background-color: #120c14;
+    
+    color: white;
+    opacity: 70%;
+    
+    border: 1px solid #f7d0e3;
+    margin: 0 1rem;
+    
+  }
+
+  .hourlyButton:hover{
+    color:red;
+  }
+
   .app.warm {
-    background-image: url('./assets/warm.jpg');
+    background-image: url('./assets/warmtrees.jpg');
   }
 
   main {
@@ -56,20 +81,35 @@
   }
 
   .location-box .location {
-    color: #FFF;
+    color:white;
+    margin: 10px auto;
+    width: 20rem;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgba(34, 29, 29, 0.7);
+    border-color: white;
+    outline: white;
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
-    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+    text-shadow: none;
   }
 
+  
+
   .location-box .date {
-    color: #FFF;
+    color:white;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 600;
     font-style: italic;
     text-align: center;
-    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+    text-shadow: none;
+    padding: 10px;
+    width: 20rem;
+    margin: 10px auto;
+    background-color: rgba(34, 29, 29, 0.7);
+    border-radius: 16px;
+
   }
 
   .weather-box {
@@ -80,7 +120,7 @@
     position: relative;
     display: inline-block;
     margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(34, 29, 29, 0.7);
     border-radius: 16px;
 
     padding: 15px 25px;
@@ -116,15 +156,43 @@
     left: calc(50% - 15rem);
   }
 
-  .weeklybox {
+  /*.weeklybox {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5px;
     column-gap: 1px;
     color: white;
+
+    
+    align-items: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    
+    
+  }*/
+
+  .weeklybox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    row-gap: 5px;
+    column-gap: 1px;
+    color: white;
+    background-color: #2a2a2ab6;
+    border: 1px solid #ececec;
+    flex-direction: row;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    margin: 10px 10px 10px 10px ;
+    margin-right: 20px;
+    
+    
   }
 
   .weeklybox :first-child {
+    display: inline;
     align-self: center;
     color: white;
   }
@@ -142,8 +210,41 @@
     padding: 0.5rem 1.5rem;
     cursor: pointer;
     border-radius: 4px;
+<<<<<<< Updated upstream
     background-color: #800040;
     color: white;
     border: 1px solid #800040;
+=======
+    background: none;
+    
+    background-color:none;
+
+    color: white;
+    opacity: 90%;
+    
+    border: none;
+    margin: -2 rem;
+  }
+
+   .findlocation {
+        font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background: none;
+    
+    background-color: #120c14;
+    
+    color: white;
+    opacity: 70%;
+    
+    border: 1px solid #f7d0e3;
+>>>>>>> Stashed changes
     margin: 0 1rem;
   }
+
+  .findlocation:hover{
+    color:red;
+  }
+
+ 

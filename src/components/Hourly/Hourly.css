@@ -1,0 +1,30 @@
+
+.hourly-box{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12pt;
+    font-weight: 500;
+    
+}
+
+.temperature {
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px 0px 7px 0px;
+    
+    background-color: rgba(74, 74, 214, 0.797);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    display: inline-block;
+    position:initial;
+
+}
+
+.image {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
