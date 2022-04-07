@@ -19,16 +19,6 @@ function Alerts(props) {
     }
 }
 
-/*return ( <div className="alert-box">
-    <div className="popupalert-open">
-    {checkAlerts()}
-    </div>
-)*/
-
-
-
-
-
     return (
         <div className = "alert-box">
             <div className="alert-open">
