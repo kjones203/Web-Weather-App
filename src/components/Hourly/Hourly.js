@@ -5,10 +5,6 @@ import sunhourly from '../weather icons/sunhourly.png';
 import moon from '../weather icons/moon.png';
 
 function Hourly(props) {
-  /* const dt = 1610685149
-    
-    var day = new Date(dt*1000);*/
-
   function displayWeather(value) {
     if (value > 5 && value < 18) {
       return <img src={sunhourly} height={70} width={70} bottom={0} />;
