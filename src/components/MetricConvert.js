@@ -9,8 +9,5 @@ function MetricConvert(props){
         <div>{Math.round(props.wind_speed * 2.236936)} mph</div>
       )
     };
-    
 }
-
-
 export default MetricConvert;
