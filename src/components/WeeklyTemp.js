@@ -19,20 +19,11 @@ for (let i = 0, len = dayCount.length; i < len; i++){
         weekOrder[j - 1] = (dayCount[(i+j)% len])
     }
 } 
-
-
 function WeeklyTemp(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [randomPerson, setRandomPerson] = useState(null);
   const [title, setTitle] = useState('name');
   const [value, setValue] = useState('random person');
-  /*const [dailyT1, setdailyT1] = useState(null);
-  const [dailyT2, setdailyT2] = useState(null);
-  const [dailyT3, setdailyT3] = useState(null);
-  const [dailyT4, setdailyT4] = useState(null);
-  const [dailyT5, setdailyT5] = useState(null);
-  const [dailyT6, setdailyT6] = useState(null);
-  const [dailyT7, setdailyT7] = useState(null); don't need these ? */
 
   const fetchRandomPerson = async () => {
     const response = await fetch(
@@ -69,19 +60,12 @@ function WeeklyTemp(props) {
     };
 =======
 
-    //var day = new Date(data.daily[0].dt * 1000);
-
-
     for (let i = 0, len = dayCount.length; i < len; i++){
       for (let j = day; weekOrder.length < 7; j++){
-          //console.log(dayCount[(i+j)% len]);
           weekOrder.push(dayCount[(i+j)% len]);
       }
-      //console.log('***');
       break;
   } 
-
-
     setMin1(data.daily[0].temp.min);
     setMin2(data.daily[1].temp.min);
     setMin3(data.daily[2].temp.min);
@@ -99,15 +83,6 @@ function WeeklyTemp(props) {
     setMax7(data.daily[6].temp.max);
 
 >>>>>>> Stashed changes
-
-    /* setdailyT1(data.daily[0].temp.day);
-    setdailyT2(data.daily[1].temp.day);
-    setdailyT3(data.daily[2].temp.day);
-    setdailyT4(data.daily[3].temp.day);
-    setdailyT5(data.daily[4].temp.day);
-    setdailyT6(data.daily[5].temp.day);
-    setdailyT7(data.daily[6].temp.day); */
-    
   };
   useEffect(() => {
     fetchRandomPerson();
