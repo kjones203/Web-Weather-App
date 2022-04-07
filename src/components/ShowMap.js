@@ -25,8 +25,7 @@ const ShowMap = (props) => {
             center: [lng, lat],
             zoom: zoom
         })
-        
-        //buildMaps();
+
     }, [props.lat, props.lon]);
 
 
