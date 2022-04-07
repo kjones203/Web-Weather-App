@@ -65,10 +65,6 @@ function WeatherData(props) {
         <div className="temp">
           <pre>Humidity: {props.humidity} %</pre>
         </div>
-
-
-     
-
         <div className="data-box">  <button
                   className="temp"
                   onClick={( () => setClick((prev) => prev + 1))}
@@ -78,7 +74,6 @@ function WeatherData(props) {
                   Wind Speed: <MetricConvert click={click} wind_speed={props.wind_speed} />
                 </button>
 </div>
-
         <div className="data-box">
           <div className="moon">
             <pre>Moon Phase: {getMoonPhase(props.moon)}</pre>
