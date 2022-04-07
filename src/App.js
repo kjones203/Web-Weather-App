@@ -17,13 +17,7 @@ import Hourly from './components/Hourly/Hourly.js';
 import ShowMap from './components/ShowMap.js';
 import Alerts from './components/Alerts.js';
 
-
-
-
-
 Vue.use(VueAxios, axios);
-
-
 
 >>>>>>> Stashed changes
 
@@ -34,14 +28,7 @@ const api = {
 
 function App() {
 
-
-
- 
-  
-
   const[units, setUnits] = useState('');
-
-
   const temper = 'celcius';
   const [query, setQuery] = useState(''); //init state '' returns query, setQuery
   const [weather, setWeather] = useState({}); //init state {}, returns weather, setWeather
@@ -69,22 +56,6 @@ function App() {
 
 <<<<<<< Updated upstream
 =======
-  
-  //getsData();
-  
-
-  
-  
-
-  /*function getsData() {
-    axios.get("http://localhost:4000/",  { crossdomain: true }).then(response => {
-      setsData((response.data).split(' '));
-      
-    });
-  }*/
-
- 
-
   async function fetchCityData(lat, lon) {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
@@ -101,10 +72,6 @@ function App() {
   function clickWindow(){
     setWindowOpen(!windowOpen);
   }
-
-
-
-
 
 >>>>>>> Stashed changes
   const search = (evt) => {
@@ -204,11 +171,6 @@ function App() {
     
   }
 
-  /*useEffect(() => {
-    if (query !== '') {
-      getOpenWeatherAPI();
-    }
-  }, []);*/
 >>>>>>> Stashed changes
 
   const dateBuilder = (d) => {
@@ -308,7 +270,6 @@ function App() {
                 {modalIsOpen && (
 =======
         <div>
-          
           {/*<h1>Temp: {sData[0]}</h1>
           <h1>Temp: {sData[1]}</h1>
     <h1>Temp: {sData[2]}</h1>*/}
